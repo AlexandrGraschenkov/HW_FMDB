@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E4B9C731AC3E3A20035B33D /* editView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4B9C721AC3E3A20035B33D /* editView.m */; };
+		8E4B9C771AC3F70B0035B33D /* Close5.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E4B9C741AC3F70B0035B33D /* Close5.png */; };
+		8E4B9C781AC3F70B0035B33D /* Close-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E4B9C751AC3F70B0035B33D /* Close-icon.png */; };
+		8E4B9C791AC3F70B0035B33D /* close6.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E4B9C761AC3F70B0035B33D /* close6.png */; };
+		8E4B9C7E1AC44CCC0035B33D /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E4B9C7D1AC44CCB0035B33D /* Entitlements.plist */; };
 		958923B530AC9DAA26DC8C86 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BDC6B1C32F004F28551EDC /* libPods.a */; };
 		A86C4F111AB1C93C00D93FA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A86C4F101AB1C93C00D93FA2 /* main.m */; };
 		A86C4F141AB1C93C00D93FA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A86C4F131AB1C93C00D93FA2 /* AppDelegate.m */; };
@@ -32,6 +37,12 @@
 
 /* Begin PBXFileReference section */
 		27BDC6B1C32F004F28551EDC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E4B9C711AC3E3A20035B33D /* editView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = editView.h; sourceTree = "<group>"; };
+		8E4B9C721AC3E3A20035B33D /* editView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = editView.m; sourceTree = "<group>"; };
+		8E4B9C741AC3F70B0035B33D /* Close5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Close5.png; sourceTree = "<group>"; };
+		8E4B9C751AC3F70B0035B33D /* Close-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Close-icon.png"; sourceTree = "<group>"; };
+		8E4B9C761AC3F70B0035B33D /* close6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close6.png; sourceTree = "<group>"; };
+		8E4B9C7D1AC44CCB0035B33D /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		A86C4F0B1AB1C93C00D93FA2 /* ClassProjectFMDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassProjectFMDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A86C4F0F1AB1C93C00D93FA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A86C4F101AB1C93C00D93FA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -77,6 +88,7 @@
 		A86C4F021AB1C93C00D93FA2 = {
 			isa = PBXGroup;
 			children = (
+				8E4B9C7D1AC44CCB0035B33D /* Entitlements.plist */,
 				A86C4F0D1AB1C93C00D93FA2 /* ClassProjectFMDB */,
 				A86C4F271AB1C93D00D93FA2 /* ClassProjectFMDBTests */,
 				A86C4F0C1AB1C93C00D93FA2 /* Products */,
@@ -110,6 +122,9 @@
 		A86C4F0E1AB1C93C00D93FA2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8E4B9C741AC3F70B0035B33D /* Close5.png */,
+				8E4B9C751AC3F70B0035B33D /* Close-icon.png */,
+				8E4B9C761AC3F70B0035B33D /* close6.png */,
 				A86C4F0F1AB1C93C00D93FA2 /* Info.plist */,
 				A86C4F101AB1C93C00D93FA2 /* main.m */,
 			);
@@ -151,6 +166,8 @@
 			children = (
 				A86C4F151AB1C93C00D93FA2 /* ViewController.h */,
 				A86C4F161AB1C93D00D93FA2 /* ViewController.m */,
+				8E4B9C711AC3E3A20035B33D /* editView.h */,
+				8E4B9C721AC3E3A20035B33D /* editView.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -264,9 +281,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E4B9C771AC3F70B0035B33D /* Close5.png in Resources */,
 				A86C4F1A1AB1C93D00D93FA2 /* Main.storyboard in Resources */,
 				A86C4F1F1AB1C93D00D93FA2 /* LaunchScreen.xib in Resources */,
+				8E4B9C791AC3F70B0035B33D /* close6.png in Resources */,
+				8E4B9C7E1AC44CCC0035B33D /* Entitlements.plist in Resources */,
 				A86C4F1C1AB1C93D00D93FA2 /* Images.xcassets in Resources */,
+				8E4B9C781AC3F70B0035B33D /* Close-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +342,7 @@
 				A86C4F361AB1CA4200D93FA2 /* DatabaseManager.m in Sources */,
 				A86C4F171AB1C93D00D93FA2 /* ViewController.m in Sources */,
 				A86C4F141AB1C93C00D93FA2 /* AppDelegate.m in Sources */,
+				8E4B9C731AC3E3A20035B33D /* editView.m in Sources */,
 				A86C4F3B1AB1D10A00D93FA2 /* FruitModel.m in Sources */,
 				A86C4F111AB1C93C00D93FA2 /* main.m in Sources */,
 			);
@@ -381,7 +403,9 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "-";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -422,7 +446,9 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "-";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

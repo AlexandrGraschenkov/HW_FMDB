@@ -19,8 +19,9 @@
 
 + (instancetype)shared;
 - (void)migrateDatabaseIfNescessary;
-
 - (NSArray *)getFruitsArray;
 - (DBResult *)getFruitsArrayWithLimit:(NSInteger)limit offset:(NSInteger)offset;
+-(void)saveModel:(FruitModel*)model;
+-(FruitModel*)loadModel:(NSInteger)fruitID;
 
 @end

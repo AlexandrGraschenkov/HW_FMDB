@@ -8,6 +8,7 @@
 
 #import "DatabaseManager.h"
 #import <FMDB.h>
+#import "FruitModel.h"
 
 @implementation DBResult
 
@@ -24,9 +25,11 @@
 
 
 @implementation DatabaseManager
+
 {
     FMDatabase *db;
-    dispatch_queue_t queue;
+    //dispatch_queue_t queue;
+    FMDatabaseQueue *queue;
 }
 
 
@@ -44,12 +47,15 @@
     self = [super init];
     if (self) {
         NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+        NSLog(@"%@", docDir);
         NSString *path = [docDir stringByAppendingPathComponent:@"db.sqlite"];
         db = [[FMDatabase alloc] initWithPath:path];
-        
-        queue = dispatch_queue_create("Database Queue", DISPATCH_QUEUE_SERIAL);
+        //__weak typeof(self) weakSelf = self;
+        queue = [FMDatabaseQueue databaseQueueWithPath:path];
+        //queue = dispatch_queue_create("Database Queue", DISPATCH_QUEUE_SERIAL);
         
         [db open];
+        
     }
     return self;
 }
@@ -60,23 +66,78 @@
 
 #pragma mark -
 - (NSArray *)getFruitsArray {
-    FMResultSet *set = [db executeQuery:@"select * from Fruits"];
+    FMResultSet __block *set;
+    [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        set = [db executeQuery:@"select * from Fruits"];
+        if (![set next]) {
+            *rollback = YES;
+            return;
+        };
+    }];
+    
     NSMutableArray *arr = [NSMutableArray new];
     while (set.next) {
         [arr addObject:[[FruitModel alloc] initWithFMDBSet:set]];
     }
+
     return arr;
+}
+
+
+-(FruitModel*)loadModel:(NSInteger)fruitID{
+    NSLog(@"%@", @"load model");
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM Fruits WHERE id=%li", fruitID];
+    FMResultSet __block *set;
+    [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        set=[db executeQuery:sql];
+        if (![set next]) {
+            *rollback = YES;
+            return;
+        }
+        
+    }];
+    FruitModel *model = [[FruitModel alloc] initWithFMDBSet:set];
+    return model;
+}
+
+-(void)saveModel:(FruitModel*)model{
+    NSLog(@"%@", @"save model");
+    NSString *sql = [NSString stringWithFormat:@"UPDATE Fruits SET name='%@', descript='%@' WHERE id=%li", model.name, model.descript,model.fruitId];
+    [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        BOOL b =[db executeUpdate:sql];
+        if (!b){
+            *rollback=YES;
+            return;
+        }
+        
+    }];
 }
 
 - (DBResult *)getFruitsArrayWithLimit:(NSInteger)limit offset:(NSInteger)offset {
     NSString *sql = [NSString stringWithFormat:@"select * from Fruits limit %ld offset %ld", limit, offset];
-    FMResultSet *set = [db executeQuery:sql];
+    FMResultSet __block *set;
+    [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        set = [db executeQuery:sql];
+        if (![set next]) {
+            *rollback = YES;
+            return;
+        }
+
+    }];
     NSMutableArray *arr = [NSMutableArray new];
     while (set.next) {
         [arr addObject:[[FruitModel alloc] initWithFMDBSet:set]];
     }
     
-    FMResultSet *countSet = [db executeQuery:@"select count(*) from Fruits"];
+    FMResultSet __block *countSet;
+    [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        countSet = [db executeQuery:@"select count(*) from Fruits"];
+        if (![set next]) {
+            *rollback = YES;
+            return;
+        }
+        
+    }];
     NSInteger count = 0;
     if (countSet.next) {
         count = [countSet longForColumnIndex:0];
@@ -96,7 +157,7 @@
     }
     
     if (version == 0) {
-        [db executeUpdate:@"create table IF NOT EXISTS Fruits (id integer primary key autoincrement, name text, thumb_url text, image_url text);"];
+        [db executeUpdate:@"create table IF NOT EXISTS Fruits (id integer primary key autoincrement, name text, descript text, thumb_url text, image_url text);"];
         
         NSArray *objectsArray = [self initialData];
         for (NSDictionary *dic in objectsArray) {

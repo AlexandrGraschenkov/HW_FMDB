@@ -15,6 +15,7 @@
     if (self) {
         _fruitId = [set longForColumn:@"id"];
         _name = [set stringForColumn:@"name"];
+        _descript = [set stringForColumn:@"descript"];
         _thumbURL = [NSURL URLWithString:[set stringForColumn:@"thumb_url"]];
         _imageURL = [NSURL URLWithString:[set stringForColumn:@"image_url"]];
     }

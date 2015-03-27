@@ -7,9 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol editDelegate;
 
-@interface ViewController : UITableViewController
-
-
+@interface ViewController : UITableViewController{
+    id<editDelegate> delegate;
+}
+@property (retain) id delegate;
+@property (nonatomic) NSIndexPath *path;
+-(void)setScrollable;
+-(void)delegateClose;
 @end
 
+@protocol editDelegate
+@required
+-(void)saveChanges;
+
+@end
