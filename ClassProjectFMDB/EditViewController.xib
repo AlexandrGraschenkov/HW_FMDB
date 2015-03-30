@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditViewController">
+            <connections>
+                <outlet property="descript" destination="2X6-80-q6r" id="oW3-sv-7y7"/>
+                <outlet property="image" destination="CM7-Gx-Sdc" id="lMn-nF-Ubx"/>
+                <outlet property="name" destination="Gfp-rv-lQT" id="GcZ-6i-GL3"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="2X6-80-q6r">
+                    <rect key="frame" x="18" y="193" width="284" height="140"/>
+                    <color key="backgroundColor" red="0.96042455808080807" green="0.96042455808080807" blue="0.96042455808080807" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gfp-rv-lQT">
+                    <rect key="frame" x="18" y="122" width="284" height="30"/>
+                    <color key="backgroundColor" red="0.9782394255050505" green="0.9782394255050505" blue="0.9782394255050505" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="fieldEnd:" destination="-1" eventType="editingDidEnd" id="lKP-HZ-mWK"/>
+                    </connections>
+                </textField>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CM7-Gx-Sdc">
+                    <rect key="frame" x="18" y="350" width="284" height="198"/>
+                    <color key="backgroundColor" red="0.94243213383838387" green="0.94243213383838387" blue="0.94243213383838387" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="198" id="hjN-on-pKZ"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Gfp-rv-lQT" secondAttribute="trailing" constant="18" id="4Jp-3Y-Xmi"/>
+                <constraint firstItem="CM7-Gx-Sdc" firstAttribute="top" secondItem="2X6-80-q6r" secondAttribute="bottom" constant="17" id="7zt-95-Ddh"/>
+                <constraint firstItem="Gfp-rv-lQT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="18" id="KGb-u7-1AJ"/>
+                <constraint firstItem="Gfp-rv-lQT" firstAttribute="trailing" secondItem="2X6-80-q6r" secondAttribute="trailing" id="PS2-5t-ouG"/>
+                <constraint firstItem="Gfp-rv-lQT" firstAttribute="trailing" secondItem="CM7-Gx-Sdc" secondAttribute="trailing" id="QxN-uK-xx3"/>
+                <constraint firstItem="2X6-80-q6r" firstAttribute="top" secondItem="Gfp-rv-lQT" secondAttribute="bottom" constant="41" id="Tyb-gs-dqO"/>
+                <constraint firstAttribute="bottom" secondItem="CM7-Gx-Sdc" secondAttribute="bottom" constant="20" id="bQF-1V-Cyg"/>
+                <constraint firstItem="Gfp-rv-lQT" firstAttribute="leading" secondItem="CM7-Gx-Sdc" secondAttribute="leading" id="fbv-Sf-gkv"/>
+                <constraint firstItem="Gfp-rv-lQT" firstAttribute="leading" secondItem="2X6-80-q6r" secondAttribute="leading" id="kp5-Zl-DC0"/>
+                <constraint firstItem="Gfp-rv-lQT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="122" id="wsB-Kq-f4Z"/>
+            </constraints>
+            <point key="canvasLocation" x="304" y="284"/>
+        </view>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

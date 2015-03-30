@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8E4B9C731AC3E3A20035B33D /* editView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4B9C721AC3E3A20035B33D /* editView.m */; };
 		8E4B9C771AC3F70B0035B33D /* Close5.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E4B9C741AC3F70B0035B33D /* Close5.png */; };
 		8E4B9C781AC3F70B0035B33D /* Close-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E4B9C751AC3F70B0035B33D /* Close-icon.png */; };
 		8E4B9C791AC3F70B0035B33D /* close6.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E4B9C761AC3F70B0035B33D /* close6.png */; };
 		8E4B9C7E1AC44CCC0035B33D /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E4B9C7D1AC44CCB0035B33D /* Entitlements.plist */; };
+		8E5ADE741AC947C200FFD44F /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5ADE721AC947C200FFD44F /* EditViewController.m */; };
+		8E5ADE751AC947C200FFD44F /* EditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E5ADE731AC947C200FFD44F /* EditViewController.xib */; };
 		958923B530AC9DAA26DC8C86 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BDC6B1C32F004F28551EDC /* libPods.a */; };
 		A86C4F111AB1C93C00D93FA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A86C4F101AB1C93C00D93FA2 /* main.m */; };
 		A86C4F141AB1C93C00D93FA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A86C4F131AB1C93C00D93FA2 /* AppDelegate.m */; };
@@ -37,12 +38,13 @@
 
 /* Begin PBXFileReference section */
 		27BDC6B1C32F004F28551EDC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E4B9C711AC3E3A20035B33D /* editView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = editView.h; sourceTree = "<group>"; };
-		8E4B9C721AC3E3A20035B33D /* editView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = editView.m; sourceTree = "<group>"; };
 		8E4B9C741AC3F70B0035B33D /* Close5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Close5.png; sourceTree = "<group>"; };
 		8E4B9C751AC3F70B0035B33D /* Close-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Close-icon.png"; sourceTree = "<group>"; };
 		8E4B9C761AC3F70B0035B33D /* close6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close6.png; sourceTree = "<group>"; };
 		8E4B9C7D1AC44CCB0035B33D /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		8E5ADE711AC947C200FFD44F /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
+		8E5ADE721AC947C200FFD44F /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
+		8E5ADE731AC947C200FFD44F /* EditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditViewController.xib; sourceTree = "<group>"; };
 		A86C4F0B1AB1C93C00D93FA2 /* ClassProjectFMDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassProjectFMDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A86C4F0F1AB1C93C00D93FA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A86C4F101AB1C93C00D93FA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -166,8 +168,9 @@
 			children = (
 				A86C4F151AB1C93C00D93FA2 /* ViewController.h */,
 				A86C4F161AB1C93D00D93FA2 /* ViewController.m */,
-				8E4B9C711AC3E3A20035B33D /* editView.h */,
-				8E4B9C721AC3E3A20035B33D /* editView.m */,
+				8E5ADE711AC947C200FFD44F /* EditViewController.h */,
+				8E5ADE721AC947C200FFD44F /* EditViewController.m */,
+				8E5ADE731AC947C200FFD44F /* EditViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				8E4B9C791AC3F70B0035B33D /* close6.png in Resources */,
 				8E4B9C7E1AC44CCC0035B33D /* Entitlements.plist in Resources */,
 				A86C4F1C1AB1C93D00D93FA2 /* Images.xcassets in Resources */,
+				8E5ADE751AC947C200FFD44F /* EditViewController.xib in Resources */,
 				8E4B9C781AC3F70B0035B33D /* Close-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,7 +346,7 @@
 				A86C4F361AB1CA4200D93FA2 /* DatabaseManager.m in Sources */,
 				A86C4F171AB1C93D00D93FA2 /* ViewController.m in Sources */,
 				A86C4F141AB1C93C00D93FA2 /* AppDelegate.m in Sources */,
-				8E4B9C731AC3E3A20035B33D /* editView.m in Sources */,
+				8E5ADE741AC947C200FFD44F /* EditViewController.m in Sources */,
 				A86C4F3B1AB1D10A00D93FA2 /* FruitModel.m in Sources */,
 				A86C4F111AB1C93C00D93FA2 /* main.m in Sources */,
 			);

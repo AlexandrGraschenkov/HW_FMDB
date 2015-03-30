@@ -11,13 +11,14 @@
 #import "DatabaseManager.h"
 #import "FruitModel.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "editView.h"
+#import "EditViewController.h"
 
 @interface ViewController ()
 {
     NSArray *fruits;
     NSInteger totalCount;
     UIView *edit;
+    UIViewController *editController;
     UIButton *closeButton;
     UITableView *table;
     CGPoint scrollPostion;
@@ -94,6 +95,7 @@
 - (void)newView:(NSInteger)row
 {
     screenSize = [self.view frame].size;
+    NSLog(@"Screen Size W=%f  H=%f", screenSize.width,screenSize.height);
     table = self.tableView;
     CGSize barSize = self.navigationController.navigationBar.frame.size;
     screenSize.height-=barSize.height;
@@ -101,12 +103,13 @@
     scrollPostion.x += screenSize.width/2;
     scrollPostion.y += (screenSize.height/2)+barSize.height;
     CGRect hiddenPosition = CGRectMake(scrollPostion.x+screenSize.width, scrollPostion.y+screenSize.height, screenSize.width, screenSize.height);
-    edit = [[editView alloc] initWithInt:row Fruit:[fruits objectAtIndex:row] andFrame:hiddenPosition];
+    editController = [[EditViewController alloc] initWithNibName:@"EditViewController" withBundle:[NSBundle mainBundle] withFruit:[fruits objectAtIndex:row] andFrame:hiddenPosition];
+    edit = editController.view;
     [edit addSubview:[self createButton]];
     [self.view addSubview:edit];
 
     [self setScrollable];
-    
+    NSLog(@"SLIDED VIEW W=%f  H=%f",screenSize.width,screenSize.height);
     [UIView animateWithDuration:1.0
                     animations:^{
                         edit.center = scrollPostion;
@@ -126,7 +129,7 @@
 }
 
 -(IBAction)closeEdit:(id)sender{
-    [edit performSelectorOnMainThread:@selector(saveChanges) withObject:nil waitUntilDone:YES];
+    [editController performSelectorOnMainThread:@selector(saveChanges) withObject:nil waitUntilDone:YES];
     CGRect was = edit.frame;
     CGPoint origin = was.origin;
     [UIView animateWithDuration:1.0
@@ -136,16 +139,15 @@
                          [edit setAlpha:0];
                          [edit removeFromSuperview];
     }];
+    editController=nil;
     edit=nil;
     NSArray *indexPaths = [[NSArray alloc] initWithObjects:_path, nil];
     [table reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
-//    objc_msgSend(edit,@selector(saveChanges));
+
     [self setScrollable];
-    [self reloadData];
+    //[self reloadData];
 }
--(void)delegateClose{
-    
-}
+
 -(void)setScrollable{
     [table setScrollEnabled:![table isScrollEnabled]];
 }
