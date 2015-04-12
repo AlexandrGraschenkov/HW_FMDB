@@ -22,5 +22,5 @@
 
 - (NSArray *)getFruitsArray;
 - (DBResult *)getFruitsArrayWithLimit:(NSInteger)limit offset:(NSInteger)offset;
-
+-(void)setDb:(FruitModel *)fruit;
 @end

@@ -11,6 +11,7 @@
 #import "DatabaseManager.h"
 #import "FruitModel.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "SettingController.h"
 
 @interface ViewController ()
 {
@@ -23,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -73,6 +74,16 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == fruits.count - 1) {
         [self loadMore];
+    }
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"push"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        SettingController *setting = segue.destinationViewController;
+        FruitModel *fruit = fruits[indexPath.row];
+        setting.fruit = fruit;
     }
 }
 
