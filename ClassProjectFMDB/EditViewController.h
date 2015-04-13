@@ -10,7 +10,7 @@
 #import "FruitModel.h"
 #import "ViewController.h"
 
-@interface EditViewController : UIViewController <UITextViewDelegate, editDelegate>
+@interface EditViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate>
 {
     ViewController *controller;
 }
@@ -18,13 +18,8 @@
 @property (nonatomic) IBOutlet UITextField *name;
 @property (nonatomic) IBOutlet UITextView *descript;
 @property (nonatomic) IBOutlet UIImageView *image;
-@property (nonatomic) CGSize screenSize;
-@property (nonatomic) FruitModel *fruit;
-@property (nonatomic) FMDatabase *db;
-@property (nonatomic) CGRect *frame;
 
-- (IBAction)fieldEnd:(id)sender;
--(id)initWithNibName:(NSString *)nibName withBundle:(NSBundle *)bundle withFruit:(FruitModel*)fruit andFrame:(CGRect)frame;
 
--(void)saveChanges;
+-(id)initWithNibName:(NSString *)nibName withBundle:(NSBundle *)bundle withFruit:(FruitModel*)fruit;
+
 @end

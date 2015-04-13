@@ -23,15 +23,16 @@
     UITableView *table;
     CGPoint scrollPostion;
     CGSize screenSize;
-    
+    NSIndexPath *tempPath;
 }
-
 @end
 
 @implementation ViewController
-@synthesize delegate;
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -43,23 +44,25 @@
 }
 
 - (void)reloadData {
-    DBResult *result = [[DatabaseManager shared] getFruitsArrayWithLimit:10 offset:0];
-    fruits = result.objects;
-    totalCount = result.totalCount;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
-    });
+    [[DatabaseManager shared] getFruitsArrayWithLimit:10 offset:0 withBlock:^(DBResult *res) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            fruits = [res objects];
+            totalCount = [res totalCount];
+            [self.tableView reloadData];
+        });
+    }];
 }
 
 - (void)loadMore {
     if (totalCount == fruits.count) return;
+    [[DatabaseManager shared] getFruitsArrayWithLimit:10 offset:0 withBlock:^(DBResult *res) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            fruits = [fruits arrayByAddingObjectsFromArray:res.objects];
+            totalCount = [res totalCount];
+            [self.tableView reloadData];
+        });
+    }];
     
-    DBResult *result = [[DatabaseManager shared] getFruitsArrayWithLimit:10 offset:0];
-    fruits = [fruits arrayByAddingObjectsFromArray:result.objects];
-    totalCount = result.totalCount;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
-    });
 }
 
 #pragma mark - Table
@@ -87,34 +90,20 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    _path = indexPath;
     [self newView:indexPath.row];
+    tempPath = indexPath;
 }
 
 
 - (void)newView:(NSInteger)row
 {
     screenSize = [self.view frame].size;
-    NSLog(@"Screen Size W=%f  H=%f", screenSize.width,screenSize.height);
     table = self.tableView;
-    CGSize barSize = self.navigationController.navigationBar.frame.size;
-    screenSize.height-=barSize.height;
-    scrollPostion = [table contentOffset];
-    scrollPostion.x += screenSize.width/2;
-    scrollPostion.y += (screenSize.height/2)+barSize.height;
-    CGRect hiddenPosition = CGRectMake(scrollPostion.x+screenSize.width, scrollPostion.y+screenSize.height, screenSize.width, screenSize.height);
-    editController = [[EditViewController alloc] initWithNibName:@"EditViewController" withBundle:[NSBundle mainBundle] withFruit:[fruits objectAtIndex:row] andFrame:hiddenPosition];
+    [self setScrollable];
+    editController = [[EditViewController alloc] initWithNibName:@"EditViewController" withBundle:[NSBundle mainBundle] withFruit:[fruits objectAtIndex:row]];
     edit = editController.view;
     [edit addSubview:[self createButton]];
-    [self.view addSubview:edit];
-
-    [self setScrollable];
-    NSLog(@"SLIDED VIEW W=%f  H=%f",screenSize.width,screenSize.height);
-    [UIView animateWithDuration:1.0
-                    animations:^{
-                        edit.center = scrollPostion;
-                        
-    }];
+    [self presentViewController:editController animated:YES completion:nil];
 }
 
 -(UIButton*)createButton{
@@ -129,27 +118,20 @@
 }
 
 -(IBAction)closeEdit:(id)sender{
-    [editController performSelectorOnMainThread:@selector(saveChanges) withObject:nil waitUntilDone:YES];
-    CGRect was = edit.frame;
-    CGPoint origin = was.origin;
-    [UIView animateWithDuration:1.0
-                     animations:^{
-                         edit.frame = CGRectMake(origin.x+screenSize.width, origin.y-screenSize.height, screenSize.width, screenSize.height);
-                     } completion:^(BOOL finished) {
-                         [edit setAlpha:0];
-                         [edit removeFromSuperview];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self setScrollable];
+        [self reloadCell];
     }];
-    editController=nil;
-    edit=nil;
-    NSArray *indexPaths = [[NSArray alloc] initWithObjects:_path, nil];
-    [table reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
-
-    [self setScrollable];
-    //[self reloadData];
 }
 
 -(void)setScrollable{
     [table setScrollEnabled:![table isScrollEnabled]];
+}
+-(void)reloadCell{
+    [self.tableView beginUpdates];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:tempPath, nil] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
+    tempPath = nil;
 }
 
 
