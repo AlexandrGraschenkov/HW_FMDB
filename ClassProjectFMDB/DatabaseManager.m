@@ -63,28 +63,36 @@
 }
 
 #pragma mark -
-- (NSArray *)getFruitsArray {
+-(void)getFruitsArray:(void(^)(NSArray *))completion {
+    dispatch_async(queue, ^{
     
-    NSMutableArray *arr = [NSMutableArray new];
-    [queue2 inDatabase:^(FMDatabase *db) {
-        FMResultSet *set = [db executeQuery:@"select * from Fruits"];
-        while (set.next) {
-            [arr addObject:[[FruitModel alloc] initWithFMDBSet:set]];
-        }
-    }];
-    return arr;
+        NSMutableArray *arr = [NSMutableArray new];
+        [queue2 inDatabase:^(FMDatabase *db) {
+            FMResultSet *set = [db executeQuery:@"select * from Fruits"];
+            while (set.next) {
+                [arr addObject:[[FruitModel alloc] initWithFMDBSet:set]];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(arr);
+                });
+            }
+        }];
+    });
 }
 
--(void)setDb:(FruitModel *)fruit {
-    
-    [queue2 inDatabase:^(FMDatabase *db) {
+-(void)updateFruit:(FruitModel *)fruit completion:(void(^)())completion {
+
+    dispatch_async(queue, ^{
+        
         NSString *query = [NSString stringWithFormat:@"UPDATE Fruits SET name = '%@', description = '%@' WHERE id = '%ld'", fruit.name, fruit.descriptionA, (long)fruit.fruitId];
         [db executeUpdate:query];
-    }];
-   }
 
-- (DBResult *)getFruitsArrayWithLimit:(NSInteger)limit offset:(NSInteger)offset {
-    
+    });
+}
+
+-(void)getFruitsArrayWithLimit:(NSInteger)limit offset:(NSInteger)offset completion:(void(^)(DBResult *))completion {
+ 
+    dispatch_async(queue, ^{
+        
     NSString *sql = [NSString stringWithFormat:@"select * from Fruits limit %ld offset %ld", limit, offset];
     FMResultSet *set = [db executeQuery:sql];
     NSMutableArray *arr = [NSMutableArray new];
@@ -97,15 +105,17 @@
     if (countSet.next) {
         count = [countSet longForColumnIndex:0];
     }
-    
-    return [[DBResult alloc] initWithObjects:arr totalCount:count];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        completion([[DBResult alloc] initWithObjects:arr totalCount:count]);
+    });
+    });
 }
 
 
 #pragma mark - Migrations
 - (void)migrateDatabaseIfNescessary {
     
-    [queue2 inDatabase:^(FMDatabase *db) {
+    dispatch_async(queue, ^{
         
         NSInteger version = 0;
         FMResultSet *versionSet = [db executeQuery:@"PRAGMA user_version;"];
@@ -135,8 +145,8 @@
         NSString *sql = [NSString stringWithFormat:@"PRAGMA user_version=%ld;", newVersion];
         [db executeUpdate:sql];
 
-    }];
-    
+    });
+                   
     
     }
 

@@ -24,21 +24,17 @@
     NSString *descriptionFruit = self.fruitDescription.text;
     self.fruit.name = nameFruit;
     self.fruit.descriptionA = descriptionFruit;
-    
-    [[DatabaseManager shared] setDb:self.fruit];
-    
+    [[DatabaseManager shared] updateFruit:self.fruit completion:^{
+    }];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.fruitText.text = self.fruit.name;
- 
     self.fruitDescription.text = self.fruit.descriptionA;
+    [self.fruitImg sd_setImageWithURL:self.fruit.imageURL];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-           [self.fruitImg sd_setImageWithURL:self.fruit.imageURL];
-    });
     
 }
 

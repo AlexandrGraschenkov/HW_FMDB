@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self reloadData];
+    self.navigationItem.hidesBackButton = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -36,23 +37,26 @@
 }
 
 - (void)reloadData {
-    DBResult *result = [[DatabaseManager shared] getFruitsArrayWithLimit:10 offset:0];
-    fruits = result.objects;
-    totalCount = result.totalCount;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
-    });
+    self.navigationItem.backBarButtonItem.enabled = false;
+    [[DatabaseManager shared] getFruitsArrayWithLimit:10 offset:0 completion:^(DBResult *res) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            fruits = [res objects];
+            totalCount = [res totalCount];
+            [self.tableView reloadData];
+        });
+    }];
 }
 
 - (void)loadMore {
     if (totalCount == fruits.count) return;
     
-    DBResult *result = [[DatabaseManager shared] getFruitsArrayWithLimit:10 offset:0];
-    fruits = [fruits arrayByAddingObjectsFromArray:result.objects];
-    totalCount = result.totalCount;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
-    });
+    [[DatabaseManager shared] getFruitsArrayWithLimit:10 offset:0 completion:^(DBResult *res) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            fruits = [fruits arrayByAddingObjectsFromArray:res.objects];
+            totalCount = [res totalCount];
+            [self.tableView reloadData];
+        });
+    }];
 }
 
 #pragma mark - Table
