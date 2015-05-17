@@ -17,5 +17,7 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSURL *imageURL;
 @property (nonatomic, strong) NSURL *thumbURL;
+@property (nonatomic, strong) NSString *descriptionA;
+
 
 @end
