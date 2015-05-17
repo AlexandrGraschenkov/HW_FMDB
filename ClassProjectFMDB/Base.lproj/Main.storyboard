@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ZpO-v5-MS5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ZpO-v5-MS5">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -14,19 +14,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FruitCell" rowHeight="90" id="0AT-iB-ZG1" customClass="FruitCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FruitCell" rowHeight="90" id="0AT-iB-ZG1" customClass="FruitCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0AT-iB-ZG1" id="KO5-yB-ap6">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NS9-aH-Gdc">
-                                            <rect key="frame" x="8" y="4" width="80.5" height="81"/>
+                                            <rect key="frame" x="8" y="4" width="81" height="81"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="NS9-aH-Gdc" secondAttribute="height" multiplier="1:1" id="2RO-GH-l2o"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPO-co-r7H">
-                                            <rect key="frame" x="96.5" y="34.5" width="215.5" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPO-co-r7H">
+                                            <rect key="frame" x="97" y="35" width="216" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -44,6 +44,7 @@
                                 <connections>
                                     <outlet property="fruitImageView" destination="NS9-aH-Gdc" id="ekw-Jz-nsr"/>
                                     <outlet property="nameLabel" destination="cPO-co-r7H" id="2C3-oH-0Ec"/>
+                                    <segue destination="rxs-9v-QSi" kind="push" identifier="push" id="i2G-mh-LBK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -56,7 +57,47 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3cf-0U-L1w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="335" y="418"/>
+            <point key="canvasLocation" x="193" y="418"/>
+        </scene>
+        <!--Setting Controller-->
+        <scene sceneID="oqP-rA-OEM">
+            <objects>
+                <viewController id="rxs-9v-QSi" customClass="SettingController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UOs-5M-XYG"/>
+                        <viewControllerLayoutGuide type="bottom" id="ksi-3w-4OC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Y3T-aK-E65">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qUU-CP-fjd">
+                                <rect key="frame" x="40" y="285" width="240" height="186"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NkL-ZT-OPJ">
+                                <rect key="frame" x="32" y="85" width="257" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kDK-ir-QEs">
+                                <rect key="frame" x="40" y="115" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4IZ-NT-y2r"/>
+                    <connections>
+                        <outlet property="fruitDescription" destination="kDK-ir-QEs" id="T7e-Nw-mhB"/>
+                        <outlet property="fruitImg" destination="qUU-CP-fjd" id="hMK-6l-Sd7"/>
+                        <outlet property="fruitText" destination="NkL-ZT-OPJ" id="3yW-aD-uF3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iol-Xh-bh8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="593" y="418"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YoY-7Q-ilb">
