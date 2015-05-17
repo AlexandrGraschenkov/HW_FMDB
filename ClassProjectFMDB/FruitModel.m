@@ -17,6 +17,7 @@
         _name = [set stringForColumn:@"name"];
         _thumbURL = [NSURL URLWithString:[set stringForColumn:@"thumb_url"]];
         _imageURL = [NSURL URLWithString:[set stringForColumn:@"image_url"]];
+        _descriptionA = [set stringForColumn:@"description"];
     }
     return self;
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		848BEF7B1B08B2F000F2FDED /* DetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848BEF7A1B08B2F000F2FDED /* DetailController.m */; };
 		958923B530AC9DAA26DC8C86 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BDC6B1C32F004F28551EDC /* libPods.a */; };
 		A86C4F111AB1C93C00D93FA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A86C4F101AB1C93C00D93FA2 /* main.m */; };
 		A86C4F141AB1C93C00D93FA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A86C4F131AB1C93C00D93FA2 /* AppDelegate.m */; };
@@ -32,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		27BDC6B1C32F004F28551EDC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		848BEF791B08B2F000F2FDED /* DetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailController.h; sourceTree = "<group>"; };
+		848BEF7A1B08B2F000F2FDED /* DetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailController.m; sourceTree = "<group>"; };
 		A86C4F0B1AB1C93C00D93FA2 /* ClassProjectFMDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassProjectFMDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A86C4F0F1AB1C93C00D93FA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A86C4F101AB1C93C00D93FA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 			children = (
 				A86C4F151AB1C93C00D93FA2 /* ViewController.h */,
 				A86C4F161AB1C93D00D93FA2 /* ViewController.m */,
+				848BEF791B08B2F000F2FDED /* DetailController.h */,
+				848BEF7A1B08B2F000F2FDED /* DetailController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -320,6 +325,7 @@
 				A86C4F3C1AB1D10A00D93FA2 /* FruitCell.m in Sources */,
 				A86C4F361AB1CA4200D93FA2 /* DatabaseManager.m in Sources */,
 				A86C4F171AB1C93D00D93FA2 /* ViewController.m in Sources */,
+				848BEF7B1B08B2F000F2FDED /* DetailController.m in Sources */,
 				A86C4F141AB1C93C00D93FA2 /* AppDelegate.m in Sources */,
 				A86C4F3B1AB1D10A00D93FA2 /* FruitModel.m in Sources */,
 				A86C4F111AB1C93C00D93FA2 /* main.m in Sources */,
@@ -446,6 +452,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ClassProjectFMDB/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -457,6 +464,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ClassProjectFMDB/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

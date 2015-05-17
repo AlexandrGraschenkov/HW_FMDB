@@ -11,11 +11,13 @@
 #import "DatabaseManager.h"
 #import "FruitModel.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "DetailController.h"
 
 @interface ViewController ()
 {
     NSArray *fruits;
     NSInteger totalCount;
+    NSIndexPath *path;
 }
 @end
 
@@ -23,6 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self reloadData];
     
 }
 
@@ -31,27 +34,34 @@
     
     if (!fruits) {
         [self reloadData];
-    }
-}
+    }else{
+        [self.tableView beginUpdates];
+        [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView endUpdates];
+    }}
 
 - (void)reloadData {
-    DBResult *result = [[DatabaseManager shared] getFruitsArrayWithLimit:10 offset:0];
-    fruits = result.objects;
-    totalCount = result.totalCount;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
-    });
+    self.navigationItem.backBarButtonItem.enabled = false;
+    [[DatabaseManager shared] getFruitsArrayWithLimit:10 offset:0 completion:^(DBResult *res) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            fruits = [res objects];
+            totalCount = [res totalCount];
+            [self.tableView reloadData];
+        });
+    }];
 }
+
 
 - (void)loadMore {
     if (totalCount == fruits.count) return;
     
-    DBResult *result = [[DatabaseManager shared] getFruitsArrayWithLimit:10 offset:0];
-    fruits = [fruits arrayByAddingObjectsFromArray:result.objects];
-    totalCount = result.totalCount;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
-    });
+    [[DatabaseManager shared] getFruitsArrayWithLimit:10 offset:0 completion:^(DBResult *res) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            fruits = [fruits arrayByAddingObjectsFromArray:res.objects];
+            totalCount = [res totalCount];
+            [self.tableView reloadData];
+        });
+    }];
 }
 
 #pragma mark - Table
@@ -76,4 +86,14 @@
     }
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"push"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        DetailController *setting = segue.destinationViewController;
+        FruitModel *fruit = fruits[indexPath.row];
+        setting.fruit = fruit;
+        path = indexPath;
+    }
+}
 @end
