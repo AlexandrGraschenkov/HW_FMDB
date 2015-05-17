@@ -85,16 +85,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7n-Kl-7fM">
-                                <rect key="frame" x="120" y="492" width="81" height="30"/>
-                                <state key="normal" title="Изменить">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="toDoChange:" destination="rxs-9v-QSi" eventType="touchUpInside" id="9kb-1L-2Nf"/>
-                                    <segue destination="xCk-a3-0u7" kind="push" id="sSR-pJ-WXx"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -103,7 +93,6 @@
                         <outlet property="fruitDescription" destination="kDK-ir-QEs" id="T7e-Nw-mhB"/>
                         <outlet property="fruitImg" destination="qUU-CP-fjd" id="hMK-6l-Sd7"/>
                         <outlet property="fruitText" destination="NkL-ZT-OPJ" id="3yW-aD-uF3"/>
-                        <outlet property="toChange" destination="Z7n-Kl-7fM" id="3JA-Kk-hiQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iol-Xh-bh8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -132,7 +121,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="sSR-pJ-WXx"/>
-    </inferredMetricsTieBreakers>
 </document>

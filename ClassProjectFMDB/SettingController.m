@@ -43,6 +43,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillDisappear:(BOOL)animated {
+    NSString *nameFruit = self.fruitText.text;
+    NSString *descriptionFruit = self.fruitDescription.text;
+    self.fruit.name = nameFruit;
+    self.fruit.descriptionA = descriptionFruit;
+    [[DatabaseManager shared] updateFruit:self.fruit completion:^{
+    }];
+}
 /*
 #pragma mark - Navigation
 

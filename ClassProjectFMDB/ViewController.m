@@ -17,6 +17,7 @@
 {
     NSArray *fruits;
     NSInteger totalCount;
+    NSIndexPath *path;
 }
 @end
 
@@ -33,6 +34,10 @@
     
     if (!fruits) {
         [self reloadData];
+    }else{
+        [self.tableView beginUpdates];
+        [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView endUpdates];
     }
 }
 
@@ -88,6 +93,7 @@
         SettingController *setting = segue.destinationViewController;
         FruitModel *fruit = fruits[indexPath.row];
         setting.fruit = fruit;
+         path = indexPath;
     }
 }
 
