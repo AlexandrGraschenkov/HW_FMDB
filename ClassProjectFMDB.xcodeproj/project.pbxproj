@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		875C76BC1B09B86900C540AC /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 875C76BA1B09B86900C540AC /* EditViewController.m */; };
+		875C76BD1B09B86900C540AC /* EditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 875C76BB1B09B86900C540AC /* EditViewController.xib */; };
+		875C76C11B09B89400C540AC /* Close5.png in Resources */ = {isa = PBXBuildFile; fileRef = 875C76BE1B09B89400C540AC /* Close5.png */; };
+		875C76C21B09B89400C540AC /* Close-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 875C76BF1B09B89400C540AC /* Close-icon.png */; };
+		875C76C31B09B89400C540AC /* close6.png in Resources */ = {isa = PBXBuildFile; fileRef = 875C76C01B09B89400C540AC /* close6.png */; };
 		958923B530AC9DAA26DC8C86 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BDC6B1C32F004F28551EDC /* libPods.a */; };
 		A86C4F111AB1C93C00D93FA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A86C4F101AB1C93C00D93FA2 /* main.m */; };
 		A86C4F141AB1C93C00D93FA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A86C4F131AB1C93C00D93FA2 /* AppDelegate.m */; };
@@ -32,6 +37,12 @@
 
 /* Begin PBXFileReference section */
 		27BDC6B1C32F004F28551EDC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		875C76B91B09B86900C540AC /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
+		875C76BA1B09B86900C540AC /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
+		875C76BB1B09B86900C540AC /* EditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditViewController.xib; sourceTree = "<group>"; };
+		875C76BE1B09B89400C540AC /* Close5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Close5.png; sourceTree = "<group>"; };
+		875C76BF1B09B89400C540AC /* Close-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Close-icon.png"; sourceTree = "<group>"; };
+		875C76C01B09B89400C540AC /* close6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close6.png; sourceTree = "<group>"; };
 		A86C4F0B1AB1C93C00D93FA2 /* ClassProjectFMDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassProjectFMDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A86C4F0F1AB1C93C00D93FA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A86C4F101AB1C93C00D93FA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -110,6 +121,9 @@
 		A86C4F0E1AB1C93C00D93FA2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				875C76BE1B09B89400C540AC /* Close5.png */,
+				875C76BF1B09B89400C540AC /* Close-icon.png */,
+				875C76C01B09B89400C540AC /* close6.png */,
 				A86C4F0F1AB1C93C00D93FA2 /* Info.plist */,
 				A86C4F101AB1C93C00D93FA2 /* main.m */,
 			);
@@ -149,6 +163,9 @@
 		A86C4F3E1AB1D12E00D93FA2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				875C76B91B09B86900C540AC /* EditViewController.h */,
+				875C76BA1B09B86900C540AC /* EditViewController.m */,
+				875C76BB1B09B86900C540AC /* EditViewController.xib */,
 				A86C4F151AB1C93C00D93FA2 /* ViewController.h */,
 				A86C4F161AB1C93D00D93FA2 /* ViewController.m */,
 			);
@@ -264,8 +281,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				875C76BD1B09B86900C540AC /* EditViewController.xib in Resources */,
 				A86C4F1A1AB1C93D00D93FA2 /* Main.storyboard in Resources */,
+				875C76C11B09B89400C540AC /* Close5.png in Resources */,
+				875C76C21B09B89400C540AC /* Close-icon.png in Resources */,
 				A86C4F1F1AB1C93D00D93FA2 /* LaunchScreen.xib in Resources */,
+				875C76C31B09B89400C540AC /* close6.png in Resources */,
 				A86C4F1C1AB1C93D00D93FA2 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +341,7 @@
 				A86C4F3C1AB1D10A00D93FA2 /* FruitCell.m in Sources */,
 				A86C4F361AB1CA4200D93FA2 /* DatabaseManager.m in Sources */,
 				A86C4F171AB1C93D00D93FA2 /* ViewController.m in Sources */,
+				875C76BC1B09B86900C540AC /* EditViewController.m in Sources */,
 				A86C4F141AB1C93C00D93FA2 /* AppDelegate.m in Sources */,
 				A86C4F3B1AB1D10A00D93FA2 /* FruitModel.m in Sources */,
 				A86C4F111AB1C93C00D93FA2 /* main.m in Sources */,

@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UITableViewController
-
-
+-(void)setScrollable;
 @end
+
+
 
