@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8499057C1B08E164004C334E /* DetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499057B1B08E164004C334E /* DetailVC.m */; };
 		958923B530AC9DAA26DC8C86 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BDC6B1C32F004F28551EDC /* libPods.a */; };
 		A86C4F111AB1C93C00D93FA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A86C4F101AB1C93C00D93FA2 /* main.m */; };
 		A86C4F141AB1C93C00D93FA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A86C4F131AB1C93C00D93FA2 /* AppDelegate.m */; };
@@ -32,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		27BDC6B1C32F004F28551EDC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8499057A1B08E164004C334E /* DetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailVC.h; sourceTree = "<group>"; };
+		8499057B1B08E164004C334E /* DetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailVC.m; sourceTree = "<group>"; };
 		A86C4F0B1AB1C93C00D93FA2 /* ClassProjectFMDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassProjectFMDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A86C4F0F1AB1C93C00D93FA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A86C4F101AB1C93C00D93FA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -137,10 +140,10 @@
 			isa = PBXGroup;
 			children = (
 				A86C4F121AB1C93C00D93FA2 /* AppDelegate.h */,
+				A86C4F371AB1D10A00D93FA2 /* FruitModel.h */,
 				A86C4F131AB1C93C00D93FA2 /* AppDelegate.m */,
 				A86C4F341AB1CA4200D93FA2 /* DatabaseManager.h */,
 				A86C4F351AB1CA4200D93FA2 /* DatabaseManager.m */,
-				A86C4F371AB1D10A00D93FA2 /* FruitModel.h */,
 				A86C4F381AB1D10A00D93FA2 /* FruitModel.m */,
 			);
 			name = Model;
@@ -151,6 +154,8 @@
 			children = (
 				A86C4F151AB1C93C00D93FA2 /* ViewController.h */,
 				A86C4F161AB1C93D00D93FA2 /* ViewController.m */,
+				8499057A1B08E164004C334E /* DetailVC.h */,
+				8499057B1B08E164004C334E /* DetailVC.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -320,6 +325,7 @@
 				A86C4F3C1AB1D10A00D93FA2 /* FruitCell.m in Sources */,
 				A86C4F361AB1CA4200D93FA2 /* DatabaseManager.m in Sources */,
 				A86C4F171AB1C93D00D93FA2 /* ViewController.m in Sources */,
+				8499057C1B08E164004C334E /* DetailVC.m in Sources */,
 				A86C4F141AB1C93C00D93FA2 /* AppDelegate.m in Sources */,
 				A86C4F3B1AB1D10A00D93FA2 /* FruitModel.m in Sources */,
 				A86C4F111AB1C93C00D93FA2 /* main.m in Sources */,

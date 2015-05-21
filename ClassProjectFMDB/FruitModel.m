@@ -14,9 +14,10 @@
     self = [super init];
     if (self) {
         _fruitId = [set longForColumn:@"id"];
-        _name = [set stringForColumn:@"name"];
-        _thumbURL = [NSURL URLWithString:[set stringForColumn:@"thumb_url"]];
-        _imageURL = [NSURL URLWithString:[set stringForColumn:@"image_url"]];
+        self.name = [set stringForColumn:@"name"];
+        self.thumbURL = [NSURL URLWithString:[set stringForColumn:@"thumb_url"]];
+        self.imageURL = [NSURL URLWithString:[set stringForColumn:@"image_url"]];
+        self.descriptionA = [set stringForColumn:@"description"];
     }
     return self;
 }
