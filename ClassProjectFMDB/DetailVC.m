@@ -23,7 +23,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.fruitText.text = self.fruit.name;
-    NSLog(@"%@", self.fruit.name);
     self.fruitDescription.text = self.fruit.descriptionA;
     [self.fruitImg sd_setImageWithURL:self.fruit.imageURL];
     

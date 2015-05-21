@@ -140,10 +140,10 @@
 			isa = PBXGroup;
 			children = (
 				A86C4F121AB1C93C00D93FA2 /* AppDelegate.h */,
+				A86C4F371AB1D10A00D93FA2 /* FruitModel.h */,
 				A86C4F131AB1C93C00D93FA2 /* AppDelegate.m */,
 				A86C4F341AB1CA4200D93FA2 /* DatabaseManager.h */,
 				A86C4F351AB1CA4200D93FA2 /* DatabaseManager.m */,
-				A86C4F371AB1D10A00D93FA2 /* FruitModel.h */,
 				A86C4F381AB1D10A00D93FA2 /* FruitModel.m */,
 			);
 			name = Model;

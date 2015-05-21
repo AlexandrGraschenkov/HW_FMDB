@@ -62,7 +62,6 @@
     [db close];
 }
 
-#pragma mark -
 -(void)getFruitsArray:(void(^)(NSArray *))completion {
     dispatch_async(queue, ^{
         
@@ -93,7 +92,7 @@
     
     dispatch_async(queue, ^{
         
-        NSString *sql = [NSString stringWithFormat:@"select * from Fruits limit %ld offset %ld", limit, offset];
+        NSString *sql = [NSString stringWithFormat:@"select * from Fruits limit %ld offset %ld", (long)limit, (long)offset];
         FMResultSet *set = [db executeQuery:sql];
         NSMutableArray *arr = [NSMutableArray new];
         while (set.next) {
@@ -122,7 +121,6 @@
         if (versionSet.next) {
             version = [versionSet longForColumnIndex:0];
         }
-        NSLog(@"%ld",(long)version);
         if (version == 0) {
             [db executeUpdate:@"create table IF NOT EXISTS Fruits (id integer primary key autoincrement, name text, thumb_url text, image_url text);"];
             
@@ -142,7 +140,7 @@
         }
         
         NSInteger newVersion = version;
-        NSString *sql = [NSString stringWithFormat:@"PRAGMA user_version=%ld;", newVersion];
+        NSString *sql = [NSString stringWithFormat:@"PRAGMA user_version=%ld;", (long)newVersion];
         [db executeUpdate:sql];
         
     });
