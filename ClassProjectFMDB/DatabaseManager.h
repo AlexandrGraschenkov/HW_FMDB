@@ -20,7 +20,8 @@
 + (instancetype)shared;
 - (void)migrateDatabaseIfNescessary;
 
-- (NSArray *)getFruitsArray;
-- (DBResult *)getFruitsArrayWithLimit:(NSInteger)limit offset:(NSInteger)offset;
+- (void)getFruitsArray:(void(^)(NSArray *))completion;
+- (void)getFruitsArrayWithLimit:(NSInteger)limit offset:(NSInteger)offset completion:(void(^)(DBResult *))completion;
+- (void)saveChanges:(FruitModel *)fruit completion:(void(^)())completion;
 
 @end

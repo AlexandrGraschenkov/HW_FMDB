@@ -59,54 +59,70 @@
 }
 
 #pragma mark -
-- (NSArray *)getFruitsArray {
-    FMResultSet *set = [db executeQuery:@"select * from Fruits"];
-    NSMutableArray *arr = [NSMutableArray new];
-    while (set.next) {
-        [arr addObject:[[FruitModel alloc] initWithFMDBSet:set]];
-    }
-    return arr;
+- (void)getFruitsArray:(void (^)(NSArray *))completion {
+    dispatch_async(queue, ^{
+        NSMutableArray *arr = [NSMutableArray new];
+        FMResultSet *set = [db executeQuery:@"Select * from Fruits"];
+        while ([set next]) {
+            [arr addObject:[[FruitModel alloc] initWithFMDBSet:set]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(arr);
+            });
+        }
+    });
 }
 
-- (DBResult *)getFruitsArrayWithLimit:(NSInteger)limit offset:(NSInteger)offset {
-    NSString *sql = [NSString stringWithFormat:@"select * from Fruits limit %ld offset %ld", limit, offset];
-    FMResultSet *set = [db executeQuery:sql];
-    NSMutableArray *arr = [NSMutableArray new];
-    while (set.next) {
-        [arr addObject:[[FruitModel alloc] initWithFMDBSet:set]];
-    }
+- (void)saveChanges:(FruitModel *)fruit completion:(void (^)())completion {
+    dispatch_async(queue, ^{
+        NSString *query = [NSString stringWithFormat:@"Update Fruits set name = '%@', descript = '%@' where id = '%ld'", fruit.name, fruit.descript, (long)fruit.fruitId];
+    });
+}
+
+- (void)getFruitsArrayWithLimit:(NSInteger)limit offset:(NSInteger)offset completion:(void (^)(DBResult *))completion {
     
-    FMResultSet *countSet = [db executeQuery:@"select count(*) from Fruits"];
-    NSInteger count = 0;
-    if (countSet.next) {
-        count = [countSet longForColumnIndex:0];
-    }
+    dispatch_async(queue, ^{
+        NSString *sql = [NSString stringWithFormat:@"select * from Fruits limit %ld offset %ld", limit, offset];
+        FMResultSet *set = [db executeQuery:sql];
+        NSMutableArray *arr = [NSMutableArray new];
+        while (set.next) {
+            [arr addObject:[[FruitModel alloc] initWithFMDBSet:set]];
+        }
+        FMResultSet *countSet = [db executeQuery:@"select count(*) from Fruits"];
+        NSInteger count = 0;
+        if (countSet.next) {
+            count = [countSet longForColumnIndex:0];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion([[DBResult alloc] initWithObjects:arr totalCount:count]);
+        });
+    });
     
-    return [[DBResult alloc] initWithObjects:arr totalCount:count];
+
 }
 
 
 #pragma mark - Migrations
 - (void)migrateDatabaseIfNescessary {
     
-    NSInteger version = 0;
-    FMResultSet *versionSet = [db executeQuery:@"PRAGMA user_version;"];
-    if (versionSet.next) {
+    dispatch_async(queue, ^{
+        NSInteger version = 0;
+        FMResultSet *versionSet = [db executeQuery:@"PRAGMA user_version;"];
+        if (versionSet.next) {
         version = [versionSet longForColumnIndex:0];
-    }
-    
-    if (version == 0) {
-        [db executeUpdate:@"create table IF NOT EXISTS Fruits (id integer primary key autoincrement, name text, thumb_url text, image_url text);"];
-        
-        NSArray *objectsArray = [self initialData];
-        for (NSDictionary *dic in objectsArray) {
-            [db executeUpdate:@"insert into Fruits (name, thumb_url, image_url) values (:title, :thumb, :img);" withParameterDictionary:dic];
         }
-    }
+        if (version == 0) {
+            [db executeUpdate:@"create table IF NOT EXISTS Fruits (id integer primary key autoincrement, name text, descript text, thumb_url text, image_url text);"];
+            NSArray *objectsArray = [self initialData];
+            for (NSDictionary *dic in objectsArray) {
+                [db executeUpdate:@"insert into Fruits (name, thumb_url, image_url) values (:title, :thumb, :img);" withParameterDictionary:dic];
+            }
+        }
     
     NSInteger newVersion = 1;
     NSString *sql = [NSString stringWithFormat:@"PRAGMA user_version=%ld;", newVersion];
     [db executeUpdate:sql];
+        
+    });
 }
 
 - (NSArray *)initialData {
